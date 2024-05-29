@@ -4,7 +4,7 @@ from aiogram import Dispatcher
 from keyboards import client_kb
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
-from loader import dp, movie_ganres, movie_ganres_rus
+from RecommendationMovie4J.loader import dp, movie_ganres, movie_ganres_rus
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
 

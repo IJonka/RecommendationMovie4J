@@ -1,4 +1,4 @@
-from loader import dp
+from RecommendationMovie4J.loader import dp
 from data_base.base import conn
 from aiogram.utils import executor
 
