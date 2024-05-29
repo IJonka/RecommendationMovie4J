@@ -9,8 +9,17 @@ storage = MemoryStorage()
 
 load_dotenv()
 
-ADMINS = list(int(i) for i in os.getenv('ADMINS').split(', '))
+# Проверяем наличие переменной окружения ADMINS
+admin_env = os.getenv('ADMINS')
+if admin_env is None:
+    print("Ошибка: переменная окружения 'ADMINS' не установлена.")
+    ADMINS = [229432828]
+else:
+    ADMINS = list(map(int, admin_env.split(', ')))
+
 TOKEN = os.getenv('TOKEN')
+if TOKEN is None:
+    raise ValueError("Ошибка: переменная окружения 'TOKEN' не установлена.")
 
 movie_ganres = {
     "comedy": "Комедия",
@@ -33,7 +42,5 @@ movie_ganres_rus = {
     'военное': 'military'
 }
 
-
 bot = Bot(token=TOKEN, parse_mode=types.ParseMode.HTML)
-
 dp = Dispatcher(bot=bot, storage=storage)

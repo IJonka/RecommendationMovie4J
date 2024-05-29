@@ -1,7 +1,7 @@
 from aiogram import types
 from keyboards import admin_kb
 from aiogram import Dispatcher
-from loader import ADMINS, dp, bot
+from RecommendationMovie4J.loader import ADMINS, dp, bot
 from data_base.base import add_movie
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
@@ -72,7 +72,7 @@ async def load_ganre(callbaack: types.CallbackQuery, state: FSMContext):
 # @dp.message_handler(state=FSMload.desc)
 async def load_desc(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data["desc"] = message.text
+        data["description"] = message.text
     await FSMload.next()
     await message.answer("Введите год производства ", reply_markup=admin_kb.stop_load)
 
@@ -80,7 +80,7 @@ async def load_desc(message: types.Message, state: FSMContext):
 # @dp.message_handler(state=FSMload.date)
 async def load_date(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data["description"] = message.text
+        data["date"] = message.text
     await FSMload.next()
     await message.answer("Введите страну производства ", reply_markup=admin_kb.stop_load)
 

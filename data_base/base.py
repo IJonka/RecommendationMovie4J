@@ -27,8 +27,7 @@ class Neo4jConnection:
         return response
 
 
-load_dotenv()
-conn = Neo4jConnection(uri="bolt://localhost:7687", user=os.getenv('db_user'), password=os.getenv('db_password'))
+conn = Neo4jConnection(uri="bolt://localhost:7687", user='neo4j', password='localhost')
 
 
 # conn.query("CREATE OR REPLACE DATABASE neo4j")
